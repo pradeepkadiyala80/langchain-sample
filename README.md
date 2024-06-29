@@ -4,16 +4,10 @@ This is a simple LangChain Agent that will retrive the information from a PDF fi
 
 ## How to run it?
 
-### 1. Install the python pcakages
+### 1. Install the python pacakages
 
 ```
-pip install langchain
-pip install langchain-core
-pip install langchain-openai
-pip install langchain-community
-pip install langchain-text-splitters
-pip install -U langchain-chroma
-pip install pypdf
+python -m pip install -r requirements.txt
 ```
 
 ### 2. Get OpenAI Key and add the environment variable OPENAI_API_KEY
