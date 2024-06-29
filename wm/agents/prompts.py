@@ -7,7 +7,9 @@ wm_prompt = ChatPromptTemplate.from_messages(
             "You are a helpful Wealth Management assistant.",
         ),
         ("placeholder", "{chat_history}"),
-        ("human", "{input}"),
+        ("placeholder", "{input}"),
         ("placeholder", "{agent_scratchpad}"),
+        ("placeholder", "{messages}"),
+        
     ]
 )

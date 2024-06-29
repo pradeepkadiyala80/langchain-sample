@@ -9,6 +9,8 @@ from langchain_core.messages import HumanMessage
 
 from wm.agents.wm_agent import WealthManagementAgent
 
+from IPython.display import Image, display
+
 import sys
 
 # Define the function that determines whether to continue or not
@@ -30,16 +32,16 @@ workflow.add_node("agent", agent)
 workflow.set_entry_point("agent")
 
 # We now add a normal edge to `agent`.
-workflow.add_edge('agent')
+workflow.add_edge('agent', END)
 
-# We now add a conditional edge
-workflow.add_conditional_edges(
-    # First, we define the start node. We use `agent`.
-    # This means these are the edges taken after the `agent` node is called.
-    "agent",
-    # Next, we pass in the function that will determine which node is called next.
-    should_continue,
-)
+# # We now add a conditional edge
+# workflow.add_conditional_edges(
+#     # First, we define the start node. We use `agent`.
+#     # This means these are the edges taken after the `agent` node is called.
+#     "agent",
+#     # Next, we pass in the function that will determine which node is called next.
+#     should_continue,
+# )
 
 # Initialize memory to persist state between graph runs
 checkpointer = MemorySaver()
@@ -64,5 +66,5 @@ while True:
             "messages": [human_msg]
         },
         config={"configurable": {"thread_id": 42}}
-    )    
-    print(final_state["messages"])
+    )
+    print(final_state)
