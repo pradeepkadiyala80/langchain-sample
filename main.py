@@ -4,8 +4,6 @@ import sys
 from wm.agents.wm_agent import WealthManagementAgent
 from langchain_core.messages import HumanMessage, AIMessage
 
-os.environ["OPEN_API_KEY"]="sk-proj-1dAhe3eJdJdzTzW9fGi6T3BlbkFJ1WJ9qbHovw4rbdt23yDg"
-
 WealthManagementAgent = WealthManagementAgent("./files/")
 chat_history = []
 
@@ -25,6 +23,5 @@ while True:
     })
     chat_history.append(AIMessage(content=response["output"]))
     print(response["output"])
+
     
-
-

@@ -10,7 +10,8 @@ from langchain_community.agent_toolkits.load_tools import load_tools
 from wm.tools.retriever import RetrieverTool
 from wm.agents.prompts import wm_prompt
 
-apiKey="sk-proj-1dAhe3eJdJdzTzW9fGi6T3BlbkFJ1WJ9qbHovw4rbdt23yDg"
+import os
+apiKey = os.environ.get("OPENAI_API_KEY")
 
 class WealthManagementAgent:
     def __init__(self, filepath):
@@ -32,3 +33,4 @@ class WealthManagementAgent:
 
         agent = create_tool_calling_agent(llm, tools, wm_prompt)
         return AgentExecutor(agent=agent, tools=tools)
+    
