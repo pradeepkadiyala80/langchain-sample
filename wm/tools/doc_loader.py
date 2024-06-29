@@ -1,8 +1,6 @@
 # Wealth Management Document Loader Tool Definition
 # Reference: https://python.langchain.com/v0.1/docs/modules/tools/custom_tools/
 
-
-# from wm.data.fetch.pdf_loader import load_pdfdoc
 import os
 
 from PyPDF2 import PdfReader
