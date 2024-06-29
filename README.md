@@ -28,3 +28,39 @@ or
 
 ` python3 main.py`
 
+
+## How does the program work
+
+When you run the program with ` python main.py ` you will get a prompt
+
+```
+Prompt:
+```
+
+Enter your question into the Prompt as follows
+
+```
+Prompt: What is wealth management?
+```
+
+The prompt will Answer as follows -
+
+```
+Prompt: What is wealth management?
+
+Wealth management involves professionals managing other people's money by investing funds across publicly traded stocks, bonds, managed funds, real estate, alternatives, and other opportunities based on readily available information. These professionals manage investments for specific purposes such as risk control, income, growth, or funding retirement, education, or a home purchase. The profession of wealth management began when it became possible to easily invest in multiple opportunities. Wealth management is an inherently uncertain activity, but the approach to managing wealth is becoming increasingly systematic with strategies like indexing, smart beta/factor investing, and pure alpha investing.
+
+Prompt: 
+```
+
+To exit from the prompt enter exit or quit
+
+```
+Prompt:exit
+```
+
+or
+
+```
+Prompt:quit
+```
