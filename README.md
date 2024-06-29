@@ -1,6 +1,6 @@
 # LangChain sample application with RAG Agent
 
-This is a simple LangChain Agent that will retrive the information from a PDF file and provide answers using the OpenAIChat llm.
+This is a simple LangChain Agent that will retrive the information from a PDF file and provide answers using the OpenAI llm.
 
 ## How to run it?
 
