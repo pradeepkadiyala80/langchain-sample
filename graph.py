@@ -1,3 +1,5 @@
+# Reference: https://github.com/langchain-ai/langgraph?tab=readme-ov-file
+
 from typing import Annotated, Literal, TypedDict
 
 from langgraph.graph import END, StateGraph, MessagesState
