@@ -17,20 +17,25 @@ class WealthManagementAgent:
     def __init__(self, filepath):
         self.file_path = filepath
 
-    def agent_executor(self):        
+    def agent_executor(self):  
+        # Use Open AI retreiver tool to fetch the document from file path and create embeddings
         retriever_tool = RetrieverTool(folder_path=self.file_path)  
         retriever = retriever_tool.create_retriever()
-
+        
+        # Create a RAG using the retriever tool
         wm_rag = create_retriever_tool(
             retriever,
             "WealthManagementRetrievalTool",
             "Find the contenet from the wealth management document and provide response with in the context"
         )
 
+        # Specify the Open AI model 
         llm = ChatOpenAI(api_key=apiKey,temperature=0, model="gpt-3.5-turbo")
         
+        # Use the RAG retriver as a tool
         tools = [wm_rag]        
 
+        # Create an agent as a tool calling agent with the prompt defined
         agent = create_tool_calling_agent(llm, tools, wm_prompt)
         return AgentExecutor(agent=agent, tools=tools)
     
