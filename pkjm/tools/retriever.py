@@ -36,15 +36,15 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.tools import tool
 
 class LangChainRetriever:
-    def __init__(self, model_name: str = "all-MiniLM-L6-v2"):
+    def __init__(self, model_name="all-MiniLM-L6-v2"):
         # Initialize the embeddings model
         self.text_splitter = CharacterTextSplitter(
             separator = "\n",
             chunk_size = 1000,
             chunk_overlap  = 200, #striding over the text
             length_function = len,
-        )
-        self.embeddings = HuggingFaceEmbeddings(model_name=model_name)
+        )        
+        self.embeddings = OpenAIEmbeddings()
         self.vectorstore = None
 
     def build_vectorstore(self, documents: list):
