@@ -16,7 +16,7 @@ chat_history = []
 
 llm = ChatOpenAI(api_key=apiKey,temperature=0, model="gpt-3.5-turbo")
 
-retriever = LangChainRetriever(model_name="sentence-transformers/all-mpnet-base-v2")    
+retriever = LangChainRetriever(model_name="sentence-transformers/all-MiniLM-L6-v2")    
 documents = load_docs("./files/")
 retriever.build_vectorstore(documents)
 
@@ -57,7 +57,7 @@ while True:
     # Append the responses from AI as aAI messages
     chat_history.append(AIMessage(content=response["output"]))
     # Print the Output
-    print(response)
+    print(response["output"])
 
 # Instansiate a wealthmanagement agent
 # WealthManagementAgent = WealthManagementAgent("./files/")
