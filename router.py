@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from wm_service import chat_with_agent
+from service import chat_with_agent
 router = APIRouter()
 
 @router.get("/wm/", tags=["wm_agent"])

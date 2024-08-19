@@ -1,4 +1,4 @@
-from wm.agents.wm_agent import WealthManagementAgent
+from pkjm.agents.agent import WealthManagementAgent
 from langchain_core.messages import HumanMessage, AIMessage
 
 WealthManagementAgent = WealthManagementAgent("./files/")
