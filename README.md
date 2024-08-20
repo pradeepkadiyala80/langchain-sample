@@ -58,3 +58,15 @@ or
 ```
 Prompt:quit
 ```
+
+## How does the program work as an API
+
+1. Install the following packages
+
+```
+python -m pip install fastapi
+python -m pip install uvicorn
+```
+2. Run the server
+
+`fastapi dev server.py`
