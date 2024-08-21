@@ -6,30 +6,32 @@ from langchain_openai import ChatOpenAI
 from pkjm.agents.agent import AgentX
 from pkjm.tools.retriever import LangChainRetriever
 from pkjm.tools.doc_loader import load_docs
+from pkjm.models.modelfactory import ModelFactory
 
 from langchain_core.messages import HumanMessage, AIMessage
 
-apiKey = os.environ.get("OPENAI_API_KEY")
+from config import MODEL_CONFIG, DOCUMENTS, RETRIEVER_TOOL_CONFIG, PROMPT_CONFIG
 
 chat_history = []
 
-llm = ChatOpenAI(api_key=apiKey,temperature=0, model="gpt-3.5-turbo")
+model_type = MODEL_CONFIG.pop("model_type")
+llm = ModelFactory.get_model(model_name=model_type, **MODEL_CONFIG)
 
 retriever = LangChainRetriever()    
-documents = load_docs("./files/")
+documents = load_docs(DOCUMENTS["file_path"])
 retriever.build_vectorstore(documents)
 
 while True:
     # Initialize the retriver with file documents
     retriever_tool = retriever.get_retriever_tool(
-        "WealthManagementRetrievalTool", 
-        "Find the contenet from the wealth management document and provide response with in the context"
+        RETRIEVER_TOOL_CONFIG["name"], 
+        RETRIEVER_TOOL_CONFIG["description"]
         )   
     
     # Console Prompt to take the user input
     query = input('Prompt: ')
     agentX = AgentX(llm, [retriever_tool])
-    agentX.createPrompt("You are a helpful Wealth Management assistant.")
+    agentX.createPrompt(PROMPT_CONFIG["system_message"])
 
     #To exit: use 'exit', 'quit', 'q', or Ctrl-D in the Prompt.",
     if query.lower() in ["exit", "quit", "q"]:
