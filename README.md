@@ -61,6 +61,7 @@ Prompt:quit
 
 ## How does the program work as an API
 
+
 1. Install the following packages
 
 ```
@@ -70,3 +71,34 @@ python -m pip install uvicorn
 2. Run the server
 
 `fastapi dev server.py`
+
+## How to run in local dockerhub on Mac
+
+### Pre-reqs
+
+Install docker in your local machine
+
+### Steps to create docker image and run
+
+1. Create a Dockerfile from the sample provided
+
+`cp Dockerfile.sample Dockerfile`
+
+2. Update the OPENAI_API_KEY environment variable inside Dockerfile
+
+`ENV OPENAI_API_KEY=<secret-openai_api-key>`
+
+3. Build the docker image
+
+`docker build -t ai-agent-fastapi .`
+
+Note: This will take a lot of time to create the docker image
+
+4. Run the image in a container
+
+`docker run -d -p 8000:8000 ai-agent-fastapi`
+
+5. Test the application
+
+Open the browser and enter the url http://localhost:8000/docs
+

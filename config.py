@@ -2,6 +2,10 @@ import os
 
 api_key = os.environ.get("OPENAI_API_KEY")
 
+SERVER = {
+    "route_prefix": "/pkjm"
+}
+
 MODEL_CONFIG = {
     "model_type": "chatopenai",
     "name": "gpt-3.5-turbo",    

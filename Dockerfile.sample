@@ -1,0 +1,40 @@
+# Use an official Python runtime as a parent image
+FROM python:3.11-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Install gcc and other necessary build tools
+RUN apt-get update && apt-get install -y \
+    gcc \
+    build-essential \
+    libssl-dev \
+    libffi-dev \
+    python3-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy the requirements file into the container
+COPY requirements.txt ./
+
+# Install the required packages
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the current directory contents into the container at /app
+COPY . .
+
+# (Optional) If you're using a configuration file, make sure it's included
+# and possibly set environment variables if needed
+ENV OPENAI_API_KEY=
+
+# Make port 5000 available to the world outside this container (if you're using Flask, FastAPI, etc.)
+EXPOSE 8000
+
+# Define environment variable
+ENV PORT 8000
+
+# Define environment variables (optional)
+# ENV FLASK_ENV=production
+
+# Run the command to start your application
+# Replace "app.py" with your application's entry point
+CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8000"]
