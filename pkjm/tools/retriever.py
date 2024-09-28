@@ -27,7 +27,7 @@ class LangChainRetriever:
         self.vectorstore = FAISS.from_documents(documents=splits, embedding=self.embeddings)
     
     def get_retriever(self):
-        return self.vectorstore.as_retriever(search_kwargs={"k": 5})
+        return self.vectorstore.as_retriever(search_kwargs={"k": 50})
 
     def get_retriever_tool(self, name, description):
         print("Building Retriever \n")

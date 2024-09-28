@@ -1,10 +1,12 @@
 from typing import Any, Dict, Type
 from langchain.llms import BaseLLM
 from langchain_openai import ChatOpenAI
+from langchain_mistralai.chat_models import ChatMistralAI
 
 class ModelFactory:
     MODEL_MAPPING = {
-        "chatopenai": ChatOpenAI        
+        "chatopenai": ChatOpenAI,
+        "mistralai": ChatMistralAI
     }
 
     @staticmethod
