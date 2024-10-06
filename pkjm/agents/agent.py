@@ -28,9 +28,12 @@ class AgentFactory:
         example_select = ExampleSelectorFactory.build_selector(**EXAMPLE_SELECTOR)
         example_prompt = PromptFactory.buildExamplePrompt()
 
-        # Define Model to be used
-        model_type = MODEL_CONFIG.pop("model_type")
-        llm = ModelFactory.get_model(model_name=model_type, **MODEL_CONFIG)
+        ## MODEL_CONFIG has args like model_type 
+        ## Copy MODEL_CONFIG because when you pop moddel_type the consecutive requests will not loose it 
+        kwargs_copy = dict(MODEL_CONFIG)
+        print(kwargs_copy)
+        model_type = kwargs_copy.pop("model_type")
+        llm = ModelFactory.get_model(model_name=model_type, **kwargs_copy)
 
         # #Define the Retriver for RAG
         retriever = LangChainRetriever()    

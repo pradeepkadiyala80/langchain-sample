@@ -10,7 +10,7 @@ class ModelFactory:
     }
 
     @staticmethod
-    def get_model(model_name: str, **kwargs) -> BaseLLM:
+    def get_model(model_name, **kwargs) -> BaseLLM:
         """
         Static method to get an LLM instance based on the model name.
 
